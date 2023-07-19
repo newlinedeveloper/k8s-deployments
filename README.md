@@ -8,10 +8,5 @@ Kubernetes deployment strategies
 
 - **Canary Release**: Canary deployment is a technique where a new version of an application is deployed to a subset of users or traffic. This allows you to test the new version in a production-like environment with limited impact. If the new version performs well, traffic can gradually be increased. If issues are detected, you can quickly roll back.
 
-- **A/B Testing**: A/B testing involves deploying multiple versions of an application simultaneously and splitting traffic between them. It allows you to compare the performance and user experience of different versions in a controlled manner.
-
-- **Rolling Restart**: This strategy involves restarting the application pods one at a time to apply configuration changes or updates. It is useful when you need to reload configuration files or apply changes that do not require a full deployment.
-
-- **Blue-Green-Canary**: This strategy combines elements of Blue-Green deployment and Canary Release. It allows for more controlled testing by gradually shifting traffic from Blue to Green while also monitoring and validating the new version using a small percentage of traffic.
 
 
