@@ -1,0 +1,18 @@
+# Exclude node_modules directory
+node_modules
+
+# Exclude npm log files
+npm-debug.log
+npm-error.log
+
+# Exclude development files and directories
+Dockerfile.dev
+.dockerignore
+.git
+.gitignore
+.vscode
+
+# Exclude other unnecessary files and directories
+*.log
+*.md
+*.txt
