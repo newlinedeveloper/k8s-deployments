@@ -3,6 +3,12 @@ kind: Deployment
 metadata:
   name: myapp
 spec:
+  replicas : 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: myapp
@@ -13,10 +19,10 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: nginx:latest
+        image: veerasolaiyappan/my-node-app:v2
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 8080
+        - containerPort: 3000

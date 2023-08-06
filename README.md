@@ -27,6 +27,8 @@ spec:
 kubectl apply -f Recreate/deployment.yml
 kubectl apply -f Recreate/service.yml
 
+kubectl get pods -w
+
 kubectl delete -f Recreate/deployment.yml
 kubectl delete -f Recreate/service.yml
 
@@ -34,14 +36,28 @@ kubectl delete -f Recreate/service.yml
 
 #### Rolling update deployment
 
+Gradually updates the application by replacing old replicas with new ones
+
+```
+spec:
+  replicas : 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+
+```
+
+- `maxSurge` specifies the maximum number of replicas that can be created above the desired number of replicas during the update process. In this case, it allows only one additional replica to be created at a time.
+
+- `maxUnavailable` specifies the maximum number of replicas that can be unavailable (due to termination or failure) during the update process. In this case, it allows only one replica to be unavailable at a time.
+
 ```
 kubectl apply -f RollingUpdate/deployment.yml
 kubectl apply -f RollingUpdate/service.yml
 
-kubectl set image deployment/my-app my-app=nginx:1.25.0
-
-kubectl rollout status deployment/my-app
-
+kubectl get pods -w
 
 kubectl delete -f RollingUpdate/deployment.yml
 kubectl delete -f RollingUpdate/service.yml
@@ -49,24 +65,6 @@ kubectl delete -f RollingUpdate/service.yml
 ```
 
 
-#### Canary deployment
-
-Canary deployment is a deployment strategy that introduces a new version of an application to a subset of users or traffic before making it available to the entire user base. This allows you to test the new version in a controlled environment and gather feedback before performing a full rollout. Here's how you can implement canary deployment in Kubernetes:
-
-```
-kubectl apply -f Canary/my-app-deployment.yaml
-kubectl apply -f Canary/service.yaml
-
-
-kubectl apply -f Canary/my-app-canary-deployment.yaml
-
-
-
-kubectl delete -f Canary/my-app-deployment.yaml
-kubectl delete -f Canary/my-app-canary-deployment.yaml
-kubectl delete -f Canary/service.yaml
-
-```
 
 #### Blue Green Deployment
 
@@ -89,6 +87,26 @@ kubectl scale deployment my-app-blue --replicas=0
 kubectl apply -f my-app-green-service.yaml
 
 
+
+```
+
+
+#### Canary deployment
+
+Canary deployment is a deployment strategy that introduces a new version of an application to a subset of users or traffic before making it available to the entire user base. This allows you to test the new version in a controlled environment and gather feedback before performing a full rollout. Here's how you can implement canary deployment in Kubernetes:
+
+```
+kubectl apply -f Canary/my-app-deployment.yaml
+kubectl apply -f Canary/service.yaml
+
+
+kubectl apply -f Canary/my-app-canary-deployment.yaml
+
+
+
+kubectl delete -f Canary/my-app-deployment.yaml
+kubectl delete -f Canary/my-app-canary-deployment.yaml
+kubectl delete -f Canary/service.yaml
 
 ```
 
