@@ -1,5 +1,4 @@
-# k8s-deployments
-Kubernetes deployment strategies
+# k8s-deployments strategies
 
 - **Recreate**
 
@@ -7,10 +6,22 @@ Kubernetes deployment strategies
 
 - **Blue-Green Deployment**
 
-- **Canary Release**:
+- **Canary Release**
 
 
 #### Recreate deployment
+
+Terminates all existing instances of the application and creates new replicas with the updated version
+
+in deployment configuration
+
+```
+spec:
+  replicas : 2
+  strategy: 
+    type: Recreate
+
+```
 
 ```
 kubectl apply -f Recreate/deployment.yml
