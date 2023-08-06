@@ -1,13 +1,30 @@
 # k8s-deployments strategies
 
 - **Recreate**
-
 - **Rolling Update**
-
 - **Blue-Green Deployment**
-
 - **Canary Release**
 
+#### Prerequisites
+
+- Docker setup: https://docs.docker.com/engine/install/
+- Kubectl installation: https://kubernetes.io/docs/tasks/tools/
+- Minikube setup : https://minikube.sigs.k8s.io/docs/start/
+
+- Yaml script basics
+- kubernetes basics 
+
+```
+docker version
+
+kubectl version
+
+minikube version
+
+helm version
+
+minikube start
+```
 
 #### Recreate deployment
 
