@@ -110,7 +110,7 @@ kubectl apply -f Canary/my-app-canary-deployment.yml
 kubectl apply -f Canary/my-app-deployment.yml
 kubectl apply -f Canary/service.yml
 
-for i in `seq 1 10`; do curl http://192.168.49.2:32183/; sleep 1; done
+for i in `seq 1 10`; do curl http://192.168.49.2:31988/; sleep 1; done
 
 kubectl delete -f Canary/my-app-deployment.yml
 kubectl delete -f Canary/my-app-canary-deployment.yml
