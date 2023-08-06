@@ -4,7 +4,7 @@ kind: Deployment
 metadata:
   name: my-app-blue
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
       app: my-app
@@ -17,10 +17,10 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: your-registry/your-image:blue-version
+        image: veerasolaiyappan/my-node-app:v1
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 80
+        - containerPort: 3000
