@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-app
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: my-app
@@ -11,13 +11,14 @@ spec:
     metadata:
       labels:
         app: my-app
+        version: canary
     spec:
       containers:
       - name: my-app
-        image: nginx:latest
+        image: veerasolaiyappan/my-node-app:v2
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 80
+        - containerPort: 3000

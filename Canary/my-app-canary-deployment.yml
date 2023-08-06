@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-app-canary
 spec:
-  replicas: 1  # Set the number of replicas for the canary
+  replicas: 3  
   selector:
     matchLabels:
       app: my-app
@@ -15,10 +15,10 @@ spec:
     spec:
       containers:
       - name: my-app
-        image: your-registry/your-image:canary-version
+        image: veerasolaiyappan/my-node-app:v1
         resources:
           limits:
             memory: "128Mi"
             cpu: "500m"
         ports:
-        - containerPort: 80
+        - containerPort: 3000

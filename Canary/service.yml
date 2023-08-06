@@ -8,6 +8,6 @@ spec:
     version: canary
   ports:
   - protocol: TCP
-    port: 80
-    targetPort: 80
-  type: LoadBalancer
+    port: 3000
+    targetPort: 3000
+  type: NodePort
